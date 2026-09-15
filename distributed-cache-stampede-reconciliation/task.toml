@@ -1,0 +1,18 @@
+[metadata]
+name = "distributed-cache-stampede-reconciliation"
+slug = "collinear-candidate/distributed-cache-stampede-reconciliation"
+version = "2.0.0"
+author_name = "Evaluation Engineering Team"
+author_email = "evals@collinear.ai"
+difficulty = "hard"
+category = "distributed-systems"
+tags = ["python", "redis", "sqlite", "cache-stampede", "asyncio", "incident-response"]
+
+[environment]
+timeout_sec = 2400
+memory_limit = "4GB"
+cpu_limit = 2.0
+network = "none"
+
+[verifier]
+timeout_sec = 300

@@ -1,0 +1,50 @@
+# Harbor Job Configuration for Cache Stampede Reconciliation Task
+# Executable via Harbor agent — model trials require agent mapping
+
+# Harbor expects an agent assignment — specifying the execution profile
+agent: "mini-swe-agent"  # or "docker", "remote", etc. — tells Harbor how to execute
+
+# Harbor expects tasks at top level, not under job:
+tasks:
+  - path: "."
+    attempts: 3  # 3 trials per model = 6 total trials
+
+job:
+  name: "cache-stampede-eval-{{timestamp}}"
+  description: "Distributed cache stampede incident response evaluation"
+
+# Harbor model configurations — structured through litellm/agent parameters
+models:
+  - name: "opus-4.7"
+    # Agent-mapped model configuration
+    model: "anthropic/claude-opus-4.7"
+    api_base: "https://openrouter.ai/api/v1"
+    api_key_env: "OPENROUTER_API_KEY"
+    # litellm params tied to agent execution
+    temperature: 0.0
+    max_tokens: 8192
+
+  - name: "gpt-5.5-high"
+    # Agent-mapped model configuration
+    model: "openai/gpt-5.5"
+    api_base: "https://openrouter.ai/api/v1"
+    api_key_env: "OPENROUTER_API_KEY"
+    temperature: 0.0
+    max_tokens: 8192
+
+# Harbor verifier — script-based (runs tests after agent completion)
+verifier:
+  type: "script"
+  script: "./tests/test.sh"
+  timeout_sec: 300
+
+# Harbor environment — Docker build context
+environment:
+  dockerfile: "./Dockerfile"
+  timeout_sec: 2400
+  memory_limit: "4GB"
+  cpu_limit: 2.0
+  network: "none"
+
+# Output directory for job results
+jobs_dir: "./jobs"

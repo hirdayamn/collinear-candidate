@@ -1,0 +1,27 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.16, pytest-9.1.1, pluggy-1.6.0
+rootdir: /app
+plugins: asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 0 items / 1 error
+
+==================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_outputs.py ____________________
+tests/test_outputs.py:9: in <module>
+    from analytics_service.cache_manager import StampedeProtectedCache
+analytics_service/cache_manager.py:3: in <module>
+    import aioredis
+/usr/local/lib/python3.11/site-packages/aioredis/__init__.py:1: in <module>
+    from aioredis.client import Redis, StrictRedis
+/usr/local/lib/python3.11/site-packages/aioredis/client.py:32: in <module>
+    from aioredis.connection import (
+/usr/local/lib/python3.11/site-packages/aioredis/connection.py:33: in <module>
+    from .exceptions import (
+/usr/local/lib/python3.11/site-packages/aioredis/exceptions.py:14: in <module>
+    class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisError):
+E   TypeError: duplicate base class TimeoutError
+=========================== short test summary info ============================
+ERROR tests/test_outputs.py - TypeError: duplicate base class TimeoutError
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+=============================== 1 error in 0.15s ===============================
+Task Verification Failed.

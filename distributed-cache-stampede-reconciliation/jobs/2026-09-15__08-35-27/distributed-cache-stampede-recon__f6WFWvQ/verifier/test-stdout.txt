@@ -1,0 +1,12 @@
+Reconciliation complete: WAL recovered, IDs 51-60 backfilled.
+============================= test session starts ==============================
+platform linux -- Python 3.11.16, pytest-9.1.1, pluggy-1.6.0
+rootdir: /app
+plugins: asyncio-1.4.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 5 items
+
+tests/test_outputs.py .....                                              [100%]
+
+============================== 5 passed in 0.16s ===============================
+Task Verification Passed.
